@@ -1,15 +1,18 @@
 import java.util.ArrayList;
 
 public class GerenciadorAeroportos {
+	private ArrayList<Aeroporto> aeroportos;
 
-	private Aeroporto[] aeroportos;
+	public GerenciadorAeroportos() {
+		this.aeroportos = new Arraylist<>();
+	}
 
-	public void adicionar(Aeronave aero) {
-
+	public void adicionar(Aeroporto aero) {
+		aeroportos.add(aero);
 	}
 
 	public ArrayList<Aeroporto> listarTodos() {
-		return null;
+		return new ArrayList<>(aeroportos);
 	}
 
 	public Aeroporto buscarPorCodigo(String cod) {
