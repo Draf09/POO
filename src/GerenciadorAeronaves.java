@@ -1,12 +1,14 @@
+import java.util.ArrayList;
+
 public class GerenciadorAeronaves {
 
-	private Aeronave[] aeronaves;
+	private ArrayList<Aeronave> aeronaves;
 
 	public void adicionar(Aeronave aviao) {
 
 	}
 
-	public Arraylist<Aeronave> listarTodas() {
+	public ArrayList<Aeronave> listarTodas() {
 		return null;
 	}
 
