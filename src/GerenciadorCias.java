@@ -12,13 +12,12 @@ public class GerenciadorCias {
 		empresas = new ArrayList<>(  );
 	}
 
-
 	public void add(String codigo, String nome){
 		empresas.add(new CiaAerea(codigo, nome));
 	}
 
-
 	public ArrayList<CiaAerea> getCias(){
+
 		return empresas;
 	}
 

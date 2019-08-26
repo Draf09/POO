@@ -12,9 +12,9 @@ public class GerenciadorAeroportos {
 	}
 
 	public ArrayList<Aeroporto> listarTodos() {
-
 		return new ArrayList<>(aeroportos);
 	}
+
 
 	public Aeroporto buscarCodigo(String codigo) {
 		for(Aeroporto a: aeroportos)
