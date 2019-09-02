@@ -38,8 +38,7 @@ public class Rota {
 
 	@Override
 	public java.lang.String toString() {
-		return "Rota{" +
-				"origem=" + getOrigem() +
+		return "Rota{" + "origem=" + getOrigem() +
 				", aeroporto=" + getAeroporto() +
 				", destino=" + getDestino() +
 				", aeronave=" + getAeronave() +
