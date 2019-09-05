@@ -33,9 +33,7 @@ public class Voo {
 		return status;
 	}
 
-	public void setStatus(Status novo) {
-		this.status = novo;
-	}
+
 
 	@Override
 	public java.lang.String toString() {
