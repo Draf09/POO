@@ -1,4 +1,4 @@
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 
@@ -11,23 +11,31 @@ public class GerenciadorVoos {
 		this.voos = new ArrayList<>(  );
 	}
 
-	public void adicionarVoo(Voo r) {
+	public void adicionarVoo(Voo v) {
 
-		voos.add( r );
+		this.voos.add( v );
 	}
 
 	public ArrayList<Voo> listarTodos() {
-
-		return new ArrayList<>(voos);
+		return voos;
+		//return new ArrayList<>(voos);
 	}
 
 
-	public ArrayList<Voo> buscarData(LocalDate data) {
-		ArrayList<Voo> result = new ArrayList<>(  );
+	public ArrayList<Voo> buscarData(LocalDateTime data) {
+		ArrayList<Voo> result = new ArrayList<Voo>(  );
 		for(Voo v: voos)
-			if (v.getDataHora().toLocalDate().equals(data)) {
+			if (v.getDataHora().equals(data)) {
 				result.add( v );
 			}
 		return result;
+	}
+
+	public java.lang.String toString(){
+		java.lang.String voos = "Voos\n" + "--------------------------\n";
+		for (int i=0; i<this.voos.size(); i++){
+			voos += "" + this.voos.get( i ) + "\n";
+		}
+		return voos;
 	}
 }

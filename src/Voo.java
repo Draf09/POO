@@ -3,18 +3,14 @@ import java.time.LocalDateTime;
 
 public class Voo {
 
-	public enum Status {
-						 COONFIRMADO,
-							ATRASADO,
-							CANCELADO
-	}
+	public enum Status {COONFIRMADO, ATRASADO, CANCELADO}
 
 	private LocalDateTime datahora;
 	private Duration duracao;
 	private Rota rota;
 	private Status status;
 
-	public Voo(Rota rota, LocalDateTime datahora, Duration duracao, Status status) {
+	public Voo(Rota rota, LocalDateTime datahora, Duration duracao) {
 		this.rota = rota;
 		this.datahora = datahora;
 		this.duracao = duracao;
@@ -39,5 +35,15 @@ public class Voo {
 
 	public void setStatus(Status novo) {
 		this.status = novo;
+	}
+
+	@Override
+	public java.lang.String toString() {
+		return "Voo{" +
+				"datahora=" + datahora +
+				", duracao=" + duracao +
+				", rota=" + rota +
+				", status=" + status +
+				'}';
 	}
 }

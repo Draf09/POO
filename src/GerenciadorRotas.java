@@ -10,21 +10,22 @@ public class GerenciadorRotas {
 		this.rotas = new ArrayList<>(  );
 	}
 
-	public void adicionarRota(Rota rota) {
+	public void adicionar(Rota rota) {
 
-		rotas.add(rota);
+		this.rotas.add(rota);
 	}
 
 	public ArrayList<Rota> listarTodas() {
-
-		return new ArrayList<>( rotas );
+		//return new ArrayList<>( rotas );
+		return rotas;
 	}
 
-	public ArrayList<Rota> buscarPorOrigem(String codigo) {
-		ArrayList<Rota> result = new ArrayList<>(  );
+
+	public ArrayList<Rota> buscarPorOrigem(Aeroporto orig) {
+		ArrayList<Rota> busca = new ArrayList<Rota>(  );
 		for (Rota r: rotas)
-			if (r.getOrigem().getCodigo().equals(codigo))
-				result.add(r);
-		return result;
+			if (r.getOrigem().getCodigo().equals(orig))
+				busca.add(r);
+		return busca;
 	}
 }
