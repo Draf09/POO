@@ -1,8 +1,13 @@
+/**
+ * App de Testes para a Classe MyFlight
+ *
+ */
 public class App {
 
     public static void main(String[] args) {
 
         GerenciadorCias gercias = new GerenciadorCias();
+
         CiaAerea c1 = new CiaAerea("JJ", "Latam Airlines");
         CiaAerea c2 = new CiaAerea("G3", "Gol Linhas Aéreas SA");
         CiaAerea c3 = new CiaAerea("TP", "TAP Portugal");
