@@ -1,4 +1,4 @@
-public class Aeronave{
+public class Aeronave implements Comparable<Aeronave>, Imprimivel {
 
 	private String codigo;
 	private String descricao;
@@ -29,9 +29,24 @@ public class Aeronave{
 //		return "Aeronave{" + "codigo='" + codigo + '\'' + ", descricao='" + descricao + '\'' + ", capacidade=" + capacidade + '}';
 //	}
 
+	//Implementação da Interface pra Impressão,
+	//utilizando o método toString.
+	@Override
+	public void imprimir(){
+		System.out.println(toString());
+	}
+
 	@Override
 	public String toString() {
 		return codigo + " - " + descricao + "(" + capacidade + ")";
 	}
+
+
+	@Override
+	public int compareTo(Aeronave outra) {
+		return descricao.compareTo( outra.descricao );
+	}
 }
+
+
 
