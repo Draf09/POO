@@ -23,6 +23,12 @@ public class Geo {
 		double lon1 = Math.toRadians( pos1.getLongitude() );
 		double lon2 = Math.toRadians( pos2.getLongitude() );
 
+		/*
+		Fórmula de haversine, muito utilizada em aplicações que envolvem navegação.
+		Sejam as latitudes (ϕ1 e ϕ2 ) e longitudes (λ1e λ2 ) de dois pontos,
+		e r (raio da Terra, aprox. 6371 km). A distância d entre os dois pontos sobre
+		uma esfera pode ser calculada como segue:
+		* */
 		double diflat = (lat1 - lat2) / 2;
 		double diflon = (lon1 - lat2) / 2;
 
@@ -33,6 +39,11 @@ public class Geo {
 
 		d = 2 * 6371 * Math.sin( Math.sqrt( d ) );
 		return Math.round( d );
+	}
+
+	public double distancia(Geo outra){
+		Geo obj = new Geo(getLatitude(), getLongitude());
+		return distancia( obj, outra );
 	}
 
 	@Override
