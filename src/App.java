@@ -18,13 +18,13 @@ public class App {
         System.out.println("codigo de c3: "+ c3.getCodigo());
         System.out.println("codigo de c4: "+ c4.getCodigo());
 
-        gercias.add("JJ", "Latam Airlines");
+        //gercias.add("JJ", "Latam Airlines");
         //gercias.inserir(c2);
 
-        for(CiaAerea c: gercias.getCias()){
-            System.out.println(c);
-        }
+//        for(CiaAerea c: gercias.getCias()){
+//            System.out.println(c);
+//        }
 
-        CiaAerea c5 = GerenciadorCias.pesquisar("AA");
+        //CiaAerea c5 = GerenciadorCias.pesquisar("AA");
     }
 }
