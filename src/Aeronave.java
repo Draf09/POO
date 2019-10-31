@@ -11,7 +11,6 @@ public class Aeronave implements Comparable<Aeronave>, Imprimivel {
 		this.capacidade = capacidade;
 	}
 
-
 	public String getCodigo() {
 		return codigo;
 	}
@@ -38,7 +37,7 @@ public class Aeronave implements Comparable<Aeronave>, Imprimivel {
 
 	@Override
 	public String toString() {
-		return codigo + " - " + descricao + "(" + capacidade + ")";
+		return "código: ["+codigo + "] descrição: [" + descricao + "] capacidade: [" + capacidade+"]";
 	}
 
 

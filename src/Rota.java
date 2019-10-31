@@ -11,10 +11,6 @@ public class Rota implements Comparable<Rota>{
 		return origem;
 	}
 
-	public Aeroporto getAeroporto() {
-		return aeroporto;
-	}
-
 	public Aeroporto getDestino() {
 		return destino;
 	}
@@ -27,9 +23,8 @@ public class Rota implements Comparable<Rota>{
 		return ciaAerea;
 	}
 
-	public Rota(Aeroporto origem, Aeroporto aeroporto, Aeroporto destino, Aeronave aeronave, CiaAerea ciaAerea) {
+	public Rota(Aeroporto origem, Aeroporto destino, Aeronave aeronave, CiaAerea ciaAerea) {
 		this.origem = origem;
-		this.aeroporto = aeroporto;
 		this.destino = destino;
 		this.aeronave = aeronave;
 		this.ciaAerea = ciaAerea;
@@ -43,7 +38,6 @@ public class Rota implements Comparable<Rota>{
 	@Override
 	public java.lang.String toString() {
 		return "Rota{" + "origem=" + getOrigem() +
-				", aeroporto=" + getAeroporto() +
 				", destino=" + getDestino() +
 				", aeronave=" + getAeronave() +
 				", ciaAerea=" + getCiaAerea() +

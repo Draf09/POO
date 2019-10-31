@@ -1,3 +1,6 @@
+import java.time.Duration;
+import java.time.LocalDateTime;
+
 /**
  * App de Testes para a Classe MyFlight
  *
@@ -8,23 +11,37 @@ public class App {
 
         GerenciadorCias gercias = new GerenciadorCias();
 
+        System.out.println("\n* cia aérea:");
         CiaAerea c1 = new CiaAerea("JJ", "Latam Airlines");
-        CiaAerea c2 = new CiaAerea("G3", "Gol Linhas Aéreas SA");
-        CiaAerea c3 = new CiaAerea("TP", "TAP Portugal");
-        CiaAerea c4 = new CiaAerea("AD", "Azul Linha Aereas");
+        System.out.println("codigo de c1: "+ c1.toString());
 
-        System.out.println("codigo de c1: "+ c1.getCodigo());
-        System.out.println("codigo de c2: "+ c2.getCodigo());
-        System.out.println("codigo de c3: "+ c3.getCodigo());
-        System.out.println("codigo de c4: "+ c4.getCodigo());
+        System.out.println("\n* geo:");
+        Geo g1 = new Geo(5.0, 5.0);
+        System.out.println(g1.toString());
+        Geo g2 = new Geo(7.0, 7.0);
+        System.out.println(g2.toString());
 
-        //gercias.add("JJ", "Latam Airlines");
-        //gercias.inserir(c2);
 
-//        for(CiaAerea c: gercias.getCias()){
-//            System.out.println(c);
-//        }
+        System.out.println("\n* Aeroporto:");
+        Aeroporto aeroporto1=new Aeroporto("CódigoAeroporto1", "NomeAeroporto1", g1);
+        Aeroporto aeroporto2=new Aeroporto("CódigoAeroporto2", "NomeAeroporto2", g2);
+        System.out.println(aeroporto1.toString());
+        System.out.println(aeroporto2.toString());
 
-        //CiaAerea c5 = GerenciadorCias.pesquisar("AA");
+        System.out.println("\n* Aeronave:");
+        Aeronave aeronave1 = new Aeronave("codigoAeronave1", "descricaoAeronave1", 51);
+        System.out.println(aeronave1.toString());
+
+
+
+
+
+        //cia aerea
+
+
+        //Voo v1 = new Voo(Rota rota, LocalDateTime datahora, Duration duracao)
+
+
+        System.out.println();
     }
 }
