@@ -18,16 +18,6 @@ public class Voo {
 	}
 
 
-	public Voo(Rota rota, Duration duracao) {
-
-		this(rota,LocalDateTime.of(2016,8,12,12,00,0), duracao);
-	    //this(rota, LocalDateTime.now(), duracao);
-		//Duration duracao = Duration.ofMinutes(120); // 2 horas
-	}
-
-
-
-
 	public LocalDateTime getDataHora() {
 		return datahora;
 	}
