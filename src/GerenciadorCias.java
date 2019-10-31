@@ -18,7 +18,7 @@ public class GerenciadorCias {
 //		cia = new ArrayList<>(  );
 //		empresas = new ArrayList<>(  );
 	}
-	public void carregaCias(String nomeArq) throws IOException{
+	public void carregaDados (String nomeArq) throws IOException{
 		Path path1 = Paths.get( "airlines.dat" );
 		try (Scanner sc = new Scanner(Files.newBufferedReader(path1, Charset.forName("utf8")))) {
 			sc.useDelimiter( "[;\n]" );
