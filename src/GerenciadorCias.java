@@ -10,8 +10,10 @@ import java.util.*;
 
 public class GerenciadorCias {
 	private Map<String, CiaAerea> empresas;
+
 	//private static ArrayList<CiaAerea> empresas;
 	//private ArrayList<CiaAerea> cia;
+
 
 	public GerenciadorCias() {
 		this.empresas = new HashMap<>(  );
@@ -28,12 +30,12 @@ public class GerenciadorCias {
 				cod = sc.next();
 				nome = sc.next();
 				CiaAerea nova = new CiaAerea( cod, nome );
-				adicionar( nova );
+				add( nova );
 			}
 		}
 	}
 
-	public void adicionar(CiaAerea cia1) {
+	public void add(CiaAerea cia1) {
 		empresas.put(cia1.getCodigo(), cia1);
 	}
 

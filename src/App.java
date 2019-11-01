@@ -10,7 +10,12 @@ public class App {
 
     public static void main(String[] args) {
 
-        GerenciadorCias gercias = new GerenciadorCias();
+        GerenciadorCias gerenciadorCias1 = new GerenciadorCias();
+        GerenciadorRotas gerenciadorRotas1 = new GerenciadorRotas();
+        GerenciadorAeroportos gerenciadorAeroportos1 = new GerenciadorAeroportos();
+        GerenciadorVoos gerenciadorVoos1 = new GerenciadorVoos();
+        GerenciadorAeronaves gerenciadorAeronaves1 = new GerenciadorAeronaves();
+
 
         System.out.println("\n* cia aérea:");
         CiaAerea c1 = new CiaAerea("JJ", "Latam Airlines");

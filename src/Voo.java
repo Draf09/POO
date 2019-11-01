@@ -17,6 +17,12 @@ public class Voo {
 		this.status = Status.COONFIRMADO;
 	}
 
+	public Voo(Rota rota, LocalDateTime datahora) {
+		this.rota = rota;
+		this.datahora = datahora;
+		this.status = Status.COONFIRMADO;
+	}
+
 
 	public LocalDateTime getDataHora() {
 		return datahora;

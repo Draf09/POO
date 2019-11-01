@@ -3,11 +3,14 @@ import java.util.ArrayList;
 public class GerenciadorAeroportos {
 	private ArrayList<Aeroporto> aeroportos;
 
+	public GerenciadorAeroportos() {}
 	public GerenciadorAeroportos(ArrayList<Aeroporto> aeroportos) {
 		this.aeroportos = aeroportos;
 	}
 
-	public void adicionar(Aeroporto aero) {
+
+
+	public void add(Aeroporto aero) {
 		aeroportos.add(aero);
 	}
 

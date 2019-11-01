@@ -11,7 +11,7 @@ public class GerenciadorVoos {
 		this.voos = new ArrayList<>(  );
 	}
 
-	public void adicionarVoo(Voo v) {
+	public void add(Voo v) {
 
 		this.voos.add( v );
 	}

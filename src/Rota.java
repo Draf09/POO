@@ -23,6 +23,7 @@ public class Rota implements Comparable<Rota>{
 		return ciaAerea;
 	}
 
+	public Rota(){}
 	public Rota(Aeroporto origem, Aeroporto destino, Aeronave aeronave, CiaAerea ciaAerea) {
 		this.origem = origem;
 		this.destino = destino;
