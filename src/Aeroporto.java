@@ -39,4 +39,13 @@ public class Aeroporto implements Comparable<Aeroporto> {
 	public int compareTo(Aeroporto outro){
 		return this.nome.compareTo(outro.nome);
 	}
+
+	@Override
+	public java.lang.String toString() {
+		return "Aeroporto{" +
+				"código=" + codigo +
+				", nome=" + nome +
+				", geo=" + loc +
+				'}';
+	}
 }

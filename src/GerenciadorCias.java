@@ -10,8 +10,10 @@ import java.util.*;
 
 public class GerenciadorCias {
 	private Map<String, CiaAerea> empresas;
+
 	//private static ArrayList<CiaAerea> empresas;
 	//private ArrayList<CiaAerea> cia;
+
 
 	public GerenciadorCias() {
 		this.empresas = new HashMap<>(  );
@@ -28,13 +30,12 @@ public class GerenciadorCias {
 				cod = sc.next();
 				nome = sc.next();
 				CiaAerea nova = new CiaAerea( cod, nome );
-				adicionar( nova );
+				add( nova );
 			}
 		}
 	}
 
-	public void adicionar(CiaAerea cia1) {
-
+	public void add(CiaAerea cia1) {
 		empresas.put(cia1.getCodigo(), cia1);
 	}
 
@@ -61,7 +62,6 @@ public class GerenciadorCias {
 //	}
 
 	public CiaAerea buscarCodigo(String cod){
-
 		return empresas.get( cod );
 	}
 
@@ -70,11 +70,5 @@ public class GerenciadorCias {
 			if(cia.getNome().equals(nome))
 				return cia;
 		return null;
-	}
-
-	public ArrayList<CiaAerea> listarTodosOrdenado() {
-		ArrayList<CiaAerea> list = new ArrayList<>(empresas.values());
-		list.sort(Comparator.comparing(CiaAerea::getCodigo));
-		return list;
 	}
 }

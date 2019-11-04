@@ -1,73 +1,46 @@
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
-public class VooEscalas extends Voo{
+public class VooEscalas {
 
 
-    public enum Status { CONFIRMADO, ATRASADO, CANCELADO };
+    ArrayList<Voo> escalas = new ArrayList<Voo>();
 
-    private ArrayList<Rota> rotas;
 
-    private LocalDateTime datahora;
-    private Duration duracao;
-    private Rota rota;
-    private Rota rotaFinal;
-    private Status status;
-
-    // Construtor
-    public VooEscalas(Rota rota, Rota rotaFinal, LocalDateTime datahora, Duration duracao) {
-        super(rota, datahora, duracao);
-        this.rotaFinal = rotaFinal;
-        //rotas = new ArrayList<>();
+   // Construtor
+    public VooEscalas(Voo ... a) {
+        for (Voo i: a)
+            escalas.add(i);
     }
 
-    public ArrayList<Rota> getRotas() {
-        return rotas;
+    public ArrayList<Voo> getRotas() {
+        return escalas;
     }
 
-    public void setRotas(ArrayList<Rota> rotas) {
-        this.rotas = rotas;
+    public String PrintSomaDuracao(){
+        return ("a duração de todos voos somada é: "+getDuracao());
     }
 
-    public LocalDateTime getDatahora() {
-        return datahora;
-    }
-
-
-    @Override
     public Duration getDuracao() {
+        Duration duracao=Duration.of(0, ChronoUnit.HOURS);
+        for (Voo a: escalas)
+            duracao=duracao.plus(a.getDuracao());
         return duracao;
     }
 
-    @Override
-    public Rota getRota() {
-        return rota;
-    }
 
 
-    public Rota getRotaFinal() {
-        return rotaFinal;
-    }
 
-
-    @Override
     public java.lang.String toString() {
-        return "VooEscalas{" +
-                "rotas=" + rotas +
-                ", datahora=" + datahora +
-                ", duracao=" + duracao +
-                ", rota=" + rota +
-                ", rotaFinal=" + rotaFinal +
-                ", status=" + status +
-                '}';
+        String A="";
+        for (Voo b: escalas) {
+            A = A.concat(b.toString());
+            A = A.concat("\n");
+        }
+        return A;
     }
 
 
-
-//    @Override
-//    public String toString() {
-//        //return status + " " + datahora + "("+duracao+"): " + rota + " -> " + rotaFinal;
-//        return getStatus() + " " + getDataHora() + "("+getDuracao()+"): " + getRota() + " -> " + rotaFinal;
-//    }
 }

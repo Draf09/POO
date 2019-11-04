@@ -6,13 +6,14 @@ public class GerenciadorRotas {
 
 	private ArrayList<Rota> rotas;
 
+	public GerenciadorRotas() {}
 	public GerenciadorRotas(ArrayList<Rota> rota) {
 
 		this.rotas = new ArrayList<>(  );
 	}
 
 
-	public void adicionar(Rota rota) {
+	public void add(Rota rota) {
 
 		this.rotas.add(rota);
 	}

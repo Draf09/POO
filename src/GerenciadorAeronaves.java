@@ -10,11 +10,13 @@ public class GerenciadorAeronaves {
 		this.aeronaves = aeronaves;
 	}
 
+	public GerenciadorAeronaves() {}
+
 	public ArrayList<Aeronave> getAeronaves() {
 		return aeronaves;
 	}
 
-	public void adicionar(Aeronave aviao) {
+	public void add(Aeronave aviao) {
 		aeronaves.add(aviao);
 	}
 
