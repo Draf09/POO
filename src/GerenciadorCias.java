@@ -34,6 +34,7 @@ public class GerenciadorCias {
 	}
 
 	public void adicionar(CiaAerea cia1) {
+
 		empresas.put(cia1.getCodigo(), cia1);
 	}
 
@@ -60,6 +61,7 @@ public class GerenciadorCias {
 //	}
 
 	public CiaAerea buscarCodigo(String cod){
+
 		return empresas.get( cod );
 	}
 
@@ -68,5 +70,11 @@ public class GerenciadorCias {
 			if(cia.getNome().equals(nome))
 				return cia;
 		return null;
+	}
+
+	public ArrayList<CiaAerea> listarTodosOrdenado() {
+		ArrayList<CiaAerea> list = new ArrayList<>(empresas.values());
+		list.sort(Comparator.comparing(CiaAerea::getCodigo));
+		return list;
 	}
 }

@@ -22,8 +22,12 @@ public class GerenciadorRotas {
 		return rotas;
 	}
 
+	public void ordenarCias() {
+		Collections.sort(rotas);
+	}
+
 	public ArrayList<Rota> buscarPorOrigem(Aeroporto orig) {
-		ArrayList<Rota> busca = new ArrayList<Rota>(  );
+		ArrayList<Rota> busca = new ArrayList<>(  );
 		for (Rota r: rotas)
 			if (r.getOrigem().getCodigo().equals(orig))
 				busca.add(r);
@@ -31,11 +35,13 @@ public class GerenciadorRotas {
 	}
 
 	public void ordenarNomesCias(){
-		rotas.sort( (Rota r1, Rota r2) -> r1.getCiaAerea().getNome().compareTo( r2.getCiaAerea().getNome() ) );
+		rotas.sort( (Rota r1, Rota r2) ->
+				r1.getCiaAerea().getNome().compareTo(
+				r2.getCiaAerea().getNome() ) );
 	}
 
 	public void ordenarNomesAeroportos() {
-		rotas.sort( (Rota r1, Rota r2) -> r1.getOrigem().getNome().compareTo(r2.getOrigem().getNome()));
+		rotas.sort( (Rota r1, Rota r2) -> r1.getCiaAerea().getNome().compareTo( r2.getCiaAerea().getNome() ));
 	}
 
 	public void ordenarNomesAeroportosCias() {

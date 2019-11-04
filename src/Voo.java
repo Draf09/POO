@@ -26,8 +26,6 @@ public class Voo {
 	}
 
 
-
-
 	public LocalDateTime getDataHora() {
 		return datahora;
 	}
