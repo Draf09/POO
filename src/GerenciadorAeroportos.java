@@ -9,7 +9,6 @@ public class GerenciadorAeroportos {
 	}
 
 
-
 	public void add(Aeroporto aero) {
 		aeroportos.add(aero);
 	}

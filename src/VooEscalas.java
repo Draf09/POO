@@ -9,7 +9,7 @@ public class VooEscalas {
     ArrayList<Voo> escalas = new ArrayList<Voo>();
 
 
-   // Construtor
+    // Construtor
     public VooEscalas(Voo ... a) {
         for (Voo i: a)
             escalas.add(i);
@@ -29,8 +29,6 @@ public class VooEscalas {
             duracao=duracao.plus(a.getDuracao());
         return duracao;
     }
-
-
 
 
     public java.lang.String toString() {

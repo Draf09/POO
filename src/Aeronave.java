@@ -47,6 +47,3 @@ public class Aeronave implements Comparable<Aeronave>, Imprimivel {
 		return descricao.compareTo( outra.descricao );
 	}
 }
-
-
-
