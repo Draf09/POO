@@ -1,11 +1,14 @@
 public class Rota implements Comparable<Rota>{
 
+	private CiaAerea ciaAerea;
 	private Aeroporto origem;
-	private Aeroporto aeroporto;
 	private Aeroporto destino;
 	private Aeronave aeronave;
-	private CiaAerea ciaAerea;
 
+
+	public CiaAerea getCiaAerea() {
+		return ciaAerea;
+	}
 
 	public Aeroporto getOrigem() {
 		return origem;
@@ -19,16 +22,15 @@ public class Rota implements Comparable<Rota>{
 		return aeronave;
 	}
 
-	public CiaAerea getCiaAerea() {
-		return ciaAerea;
-	}
+
 
 	public Rota(){}
-	public Rota(Aeroporto origem, Aeroporto destino, Aeronave aeronave, CiaAerea ciaAerea) {
+	public Rota(CiaAerea ciaAerea, Aeroporto origem, Aeroporto destino, Aeronave aeronave) {
+		this.ciaAerea = ciaAerea;
 		this.origem = origem;
 		this.destino = destino;
 		this.aeronave = aeronave;
-		this.ciaAerea = ciaAerea;
+
 	}
 
 	@Override

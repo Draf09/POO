@@ -82,7 +82,7 @@ public class App {
         ArrayList<Aeroporto> todosAero = gerenciadorAeroportos1.listarTodos();
         System.out.println("Total Aero:"+todosAero.size());
         for(Aeroporto aero: todosAero)
-            System.out.println(aero.getCodigo()+" - "+aero.getLocal()+ " - " +aero.getNome());
+            System.out.println(aero.getCodigo()+" - "+aero.getLocal()+ " - " +aero.getNome()+ " - "+aero.getCodPais());
 
 
 /*
@@ -141,12 +141,21 @@ public class App {
         System.out.println(aeronave1.toString());
 
 
-        //ArrayList<Aeronave> todasAeronaves = gerAeronave.listarTodas();
+
+        System.out.println("################## ROTAS ################## ");
+
+        GerenciadorRotas gerRotas = new GerenciadorRotas();
+
+        try {
+            gerRotas.carregaRotas(gerenciadorCias1,gerenciadorAeroportos1,gerenciadorAeronaves1);
+        } catch (IOException e) {
+            System.out.println("Não foi possível ler airports.dat!");
+        }
 
 
         System.out.println("\n* Rota:");
-        Rota rota1 = new Rota( aeroporto1,  aeroporto2, aeronave1, c1);
-        Rota rota2 = new Rota( aeroporto2,  aeroporto3, aeronave1, c1);
+        Rota rota1 = new Rota( c1, aeroporto1,  aeroporto2, aeronave1);
+        Rota rota2 = new Rota( c1, aeroporto2,  aeroporto3, aeronave1);
         System.out.println(rota1.toString());
         System.out.println(rota2.toString());
 
