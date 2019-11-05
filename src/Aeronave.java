@@ -40,7 +40,6 @@ public class Aeronave implements Comparable<Aeronave>, Imprimivel {
 		return "código: ["+codigo + "] descrição: [" + descricao + "] capacidade: [" + capacidade+"]";
 	}
 
-
 	//método compareTo
 	@Override
 	public int compareTo(Aeronave outra) {

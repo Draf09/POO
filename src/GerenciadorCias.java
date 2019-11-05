@@ -3,10 +3,8 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.lang.String;
-import java.util.Scanner;
 import java.util.*;
+import java.lang.String;
 
 public class GerenciadorCias {
 	private Map<String, CiaAerea> empresas;
@@ -16,13 +14,16 @@ public class GerenciadorCias {
 
 
 	public GerenciadorCias() {
-		this.empresas = new HashMap<>(  );
-//		cia = new ArrayList<>(  );
-//		empresas = new ArrayList<>(  );
+		this.empresas = new LinkedHashMap<>(  );
 	}
-	public void carregaDados (String nomeArq) throws IOException{
-		Path path1 = Paths.get( "airlines.dat" );
-		try (Scanner sc = new Scanner(Files.newBufferedReader(path1, Charset.forName("utf8")))) {
+
+	public ArrayList<CiaAerea> listarTodas() {
+		return new ArrayList<>( empresas.values() );
+	}
+
+	public void carregaCias (String nomeArq) throws IOException{
+		Path path = Paths.get( nomeArq );
+		try (Scanner sc = new Scanner(Files.newBufferedReader(path, Charset.forName("utf8")))) {
 			sc.useDelimiter( "[;\n]" );
 			String header = sc.nextLine();
 			String cod, nome;
@@ -39,27 +40,6 @@ public class GerenciadorCias {
 		empresas.put(cia1.getCodigo(), cia1);
 	}
 
-//	public void add(String codigo, String nome){
-//		empresas.add(new CiaAerea(codigo, nome));
-//	}
-
-//	public ArrayList<CiaAerea> getCias(){
-//
-//		return empresas;
-//	}
-
-//	public ArrayList<CiaAerea> listarTodas() {
-//		return getCias();
-//	}
-
-//	public static CiaAerea pesquisar(String codigo) {
-//		for(CiaAerea cia: empresas){
-//			if(cia.getCodigo().compareTo(codigo) == 0){  //0 <0 >0  ordenacao
-//				return cia;
-//			}
-//		}
-//		return null;
-//	}
 
 	public CiaAerea buscarCodigo(String cod){
 		return empresas.get( cod );
@@ -71,4 +51,11 @@ public class GerenciadorCias {
 				return cia;
 		return null;
 	}
+
+	public ArrayList<CiaAerea> listarTodosOrdenado() {
+		ArrayList<CiaAerea> list = new ArrayList<>(empresas.values());
+		list.sort( Comparator.comparing(CiaAerea::getCodigo));
+		return list;
+	}
+
 }

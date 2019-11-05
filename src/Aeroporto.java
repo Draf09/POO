@@ -3,25 +3,31 @@ import java.lang.String;
 
 public class Aeroporto implements Comparable<Aeroporto> {
 	private String codigo;
-	private String nome;
 	private Geo loc;
+	private String nome;
+	private String codPais;
 
-	public Aeroporto(String codigo, String nome, Geo loc) {
+	public Aeroporto(String codigo, Geo loc, String nome, String codPais) {
 		this.codigo = codigo;
-		this.nome = nome;
 		this.loc = loc;
+		this.nome = nome;
+		this.codPais = codPais;
 	}
 
 	public String getCodigo() {
 		return codigo;
 	}
 
+	public Geo getLocal() {
+		return loc;
+	}
+
 	public String getNome() {
 		return nome;
 	}
 
-	public Geo getLoc() {
-		return loc;
+	public String getCodPais() {
+		return codPais;
 	}
 
 	@Override
@@ -35,6 +41,7 @@ public class Aeroporto implements Comparable<Aeroporto> {
 				"código=" + codigo +
 				", nome=" + nome +
 				", geo=" + loc +
-				'}';
+				", codigo país=" + codPais +
+ 				'}';
 	}
 }

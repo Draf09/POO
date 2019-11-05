@@ -1,13 +1,42 @@
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class GerenciadorAeroportos {
 	private ArrayList<Aeroporto> aeroportos;
 
 	public GerenciadorAeroportos() {}
+
 	public GerenciadorAeroportos(ArrayList<Aeroporto> aeroportos) {
 		this.aeroportos = aeroportos;
 	}
 
+	public void carregaAeroportos(String nomeArq) throws IOException {
+		Path path = Paths.get(nomeArq);
+		try (Scanner sc = new Scanner( Files.newBufferedReader(path, Charset.forName("utf8")))) {
+			sc.useDelimiter("[;\n]");
+			String header = sc.nextLine();
+			String cod, nome, latitude, longitude, codigoPais;
+
+			//  String  loc; dividido em lat e long;
+
+			while (sc.hasNext()) {
+				cod = sc.next();
+				latitude = sc.next().replaceAll("(\r)", "");
+				longitude = sc.next().replaceAll("(\r)", "");
+				nome = sc.next().replaceAll("(\r)", "");
+				codigoPais = sc.next().replaceAll("(\r)", "");
+
+				Geo geo = new Geo(Double.parseDouble(latitude), Double.parseDouble(longitude));
+				Aeroporto a = new Aeroporto(cod, geo, nome,codigoPais);
+				add(a);
+			}
+		}
+	}
 
 	public void add(Aeroporto aero) {
 		aeroportos.add(aero);
@@ -16,7 +45,6 @@ public class GerenciadorAeroportos {
 	public ArrayList<Aeroporto> listarTodos() {
 		return new ArrayList<>(aeroportos);
 	}
-
 
 	public Aeroporto buscarCodigo(String codigo) {
 		for(Aeroporto a: aeroportos)

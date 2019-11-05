@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 public class VooEscalas {
 
-
     ArrayList<Voo> escalas = new ArrayList<Voo>();
 
 

@@ -1,9 +1,11 @@
+import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 
 /**
- * App de Testes para a Classe MyFlight
+ * App de Testes
  *
  */
 public class App {
@@ -11,10 +13,48 @@ public class App {
     public static void main(String[] args) {
 
         GerenciadorCias gerenciadorCias1 = new GerenciadorCias();
+
+        System.out.println("################## CIAS AÉREAS ##################");
+
+        try {
+            gerenciadorCias1.carregaCias( "airlines.dat" );
+        } catch (IOException e) {
+            System.out.println("Não foi possível ler airlines.dat!");
+        }
+        ArrayList<CiaAerea> todasCias = gerenciadorCias1.listarTodas();
+        System.out.println("Total cias:"+todasCias.size());
+        for(CiaAerea cia: todasCias)
+            System.out.println(cia.getCodigo()+" - "+cia.getNome());
+
+
+
+        gerenciadorCias1.add(new CiaAerea("JJ", "LATAM Linhas Aéreas"));
+        gerenciadorCias1.add(new CiaAerea("G3", "Gol Linhas Aéreas S/A"));
+        gerenciadorCias1.add(new CiaAerea("TP", "TAP Portugal"));
+        gerenciadorCias1.add(new CiaAerea("AD", "Azul Linhas Aéreas"));
+
+
+
         GerenciadorRotas gerenciadorRotas1 = new GerenciadorRotas();
-        GerenciadorAeroportos gerenciadorAeroportos1 = new GerenciadorAeroportos();
+
         GerenciadorVoos gerenciadorVoos1 = new GerenciadorVoos();
+
+
+        System.out.println("################## AERONAVES ##################");
+
+
         GerenciadorAeronaves gerenciadorAeronaves1 = new GerenciadorAeronaves();
+
+        try {
+            gerenciadorAeronaves1.carregaAeronaves("equipment.dat");
+        } catch (IOException e) {
+            System.out.println("Não foi possível ler equipment.dat!");
+        }
+        ArrayList<Aeronave> todosAvioes = gerenciadorAeronaves1.listarTodas();
+        System.out.println("Total avioes:"+todosAvioes.size());
+        for(Aeronave aviao: todosAvioes)
+            System.out.println(aviao.getCodigo()+" - "+aviao.getDescricao()+ " - " +aviao.getCapacidade());
+
 
 
         System.out.println("\n* cia aérea:");
@@ -30,16 +70,79 @@ public class App {
         System.out.println(g3.toString());
 
 
+        System.out.println("################## AEROPORTOS ################## ");
+
+        GerenciadorAeroportos gerenciadorAeroportos1 = new GerenciadorAeroportos();
+
+        try {
+            gerenciadorAeroportos1.carregaAeroportos("airports.dat");
+        } catch (IOException e) {
+            System.out.println("Não foi possível ler airports.dat!");
+        }
+        ArrayList<Aeroporto> todosAero = gerenciadorAeroportos1.listarTodos();
+        System.out.println("Total Aero:"+todosAero.size());
+        for(Aeroporto aero: todosAero)
+            System.out.println(aero.getCodigo()+" - "+aero.getLocal()+ " - " +aero.getNome());
+
+
+/*
+	gerAero.adicionar(new Aeroporto("POA", "Salgado Filho Intl",
+                new Geo(-29.9939, -51.1711)));
+		gerAero.adicionar(new Aeroporto("GRU", "São Paulo Guarulhos Intl",
+                new Geo(-23.4356, -46.4731)));
+		gerAero.adicionar(new Aeroporto("LIS", "Lisbon",
+                new Geo(38.7742, -9.1342)));
+		gerAero.adicionar(new Aeroporto("MIA", "Miami Intl Airport",
+                new Geo(25.7933, -80.2906)));
+		gerAero.ordenarNomes();
+
+
+		*/
+
+        System.out.println("\nAeroportos ordenados por nome:\n");
+        for(Aeroporto a: gerenciadorAeroportos1.listarTodos())
+            System.out.println(a);
+        System.out.println();
+
+        // Para facilitar a criação de rotas:
+
+        CiaAerea latam = gerenciadorCias1.buscarCodigo("JJ");
+        CiaAerea gol   = gerenciadorCias1.buscarCodigo("G3");
+        CiaAerea tap   = gerenciadorCias1.buscarCodigo("TP");
+        CiaAerea azul  = gerenciadorCias1.buscarCodigo("AD");
+
+        Aeronave b733 = gerenciadorAeronaves1.buscarPorCodigo("733");
+        Aeronave b73g = gerenciadorAeronaves1.buscarPorCodigo("73G");
+        Aeronave a380 = gerenciadorAeronaves1.buscarPorCodigo("380");
+
+        Aeroporto poa = gerenciadorAeroportos1.buscarCodigo("POA");
+        Aeroporto gru = gerenciadorAeroportos1.buscarCodigo("GRU");
+        Aeroporto lis = gerenciadorAeroportos1.buscarCodigo("LIS");
+        Aeroporto mia = gerenciadorAeroportos1.buscarCodigo("MIA");
+
+		/*
+        System.out.println("Distância POA->GRU: "+
+            Geo.distancia(poa.getLocal(), gru.getLocal()));
+
+        System.out.println("Distâcia GRU->POA: " +
+            gru.getLocal().distancia(poa.getLocal()));
+        */
+
+
         System.out.println("\n* Aeroporto:");
-        Aeroporto aeroporto1=new Aeroporto("CódigoAeroporto1", "NomeAeroporto1", g1);
-        Aeroporto aeroporto2=new Aeroporto("CódigoAeroporto2", "NomeAeroporto2", g2);
-        Aeroporto aeroporto3=new Aeroporto("CódigoAeroporto3", "NomeAeroporto3", g3);
+        Aeroporto aeroporto1=new Aeroporto("CódigoAeroporto1", g1, "NomeAeroporto1", "");
+        Aeroporto aeroporto2=new Aeroporto("CódigoAeroporto2", g2, "NomeAeroporto2", "");
+        Aeroporto aeroporto3=new Aeroporto("CódigoAeroporto3", g3, "NomeAeroporto3", "");
         System.out.println(aeroporto1.toString());
         System.out.println(aeroporto2.toString());
 
         System.out.println("\n* Aeronave:");
         Aeronave aeronave1 = new Aeronave("codigoAeronave1", "descricaoAeronave1", 51);
         System.out.println(aeronave1.toString());
+
+
+        //ArrayList<Aeronave> todasAeronaves = gerAeronave.listarTodas();
+
 
         System.out.println("\n* Rota:");
         Rota rota1 = new Rota( aeroporto1,  aeroporto2, aeronave1, c1);
@@ -58,15 +161,6 @@ public class App {
         System.out.println(VooEscalas1.PrintSomaDuracao());
         System.out.println("aqui está a descrição de cada um dos voos que compões a escala");
         System.out.println(VooEscalas1.toString());
-
-
-
-
-
-
-
-        //Voo v1 = new Voo(Rota rota, LocalDateTime datahora, Duration duracao)
-
 
         System.out.println();
     }
