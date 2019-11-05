@@ -34,9 +34,6 @@ public class App {
         gerenciadorCias1.add(new CiaAerea("AD", "Azul Linhas Aéreas"));
 
 
-
-        GerenciadorRotas gerenciadorRotas1 = new GerenciadorRotas();
-
         GerenciadorVoos gerenciadorVoos1 = new GerenciadorVoos();
 
 
@@ -99,12 +96,12 @@ public class App {
 
 		*/
 
+
         System.out.println("\nAeroportos ordenados por nome:\n");
         for(Aeroporto a: gerenciadorAeroportos1.listarTodos())
             System.out.println(a);
         System.out.println();
 
-        // Para facilitar a criação de rotas:
 
         CiaAerea latam = gerenciadorCias1.buscarCodigo("JJ");
         CiaAerea gol   = gerenciadorCias1.buscarCodigo("G3");
@@ -119,15 +116,6 @@ public class App {
         Aeroporto gru = gerenciadorAeroportos1.buscarCodigo("GRU");
         Aeroporto lis = gerenciadorAeroportos1.buscarCodigo("LIS");
         Aeroporto mia = gerenciadorAeroportos1.buscarCodigo("MIA");
-
-		/*
-        System.out.println("Distância POA->GRU: "+
-            Geo.distancia(poa.getLocal(), gru.getLocal()));
-
-        System.out.println("Distâcia GRU->POA: " +
-            gru.getLocal().distancia(poa.getLocal()));
-        */
-
 
         System.out.println("\n* Aeroporto:");
         Aeroporto aeroporto1=new Aeroporto("CódigoAeroporto1", g1, "NomeAeroporto1", "");
@@ -144,7 +132,31 @@ public class App {
 
         System.out.println("################## ROTAS ################## ");
 
+        System.out.println("Distância POA->GRU: "+
+                Geo.distancia(poa.getLocal(), gru.getLocal()));
+
+        System.out.println("Distâcia GRU->POA: " +
+                gru.getLocal().distancia(poa.getLocal()));
+
         GerenciadorRotas gerRotas = new GerenciadorRotas();
+
+        Rota poagru = new Rota(latam, poa, gru, b733);
+
+        Rota grupoa = new Rota(latam, gru, poa, b733);
+        Rota grumia = new Rota(tap, gru, mia, a380);
+        Rota grulis = new Rota(tap, gru, lis, a380);
+
+        gerRotas.add(grumia);
+        gerRotas.add(grulis);
+        gerRotas.add(poagru);
+        gerRotas.add(grupoa);
+        gerRotas.ordenarNomesCias();
+        gerRotas.ordenarNomesAeroportosCias();
+
+        System.out.println("\nRotas ordenadas:\n");
+        for(Rota r: gerRotas.listarTodas())
+            System.out.println(r);
+        System.out.println();
 
         try {
             gerRotas.carregaRotas(gerenciadorCias1,gerenciadorAeroportos1,gerenciadorAeronaves1);
@@ -165,11 +177,58 @@ public class App {
         System.out.println(voo1.toString());
         System.out.println(voo2.toString());
 
+
+        LocalDateTime manhacedo = LocalDateTime.of(2018, 3, 29, 8, 0);
+        LocalDateTime manhameio = LocalDateTime.of(2018, 4, 4, 10, 0);
+        LocalDateTime tardecedo = LocalDateTime.of(2018, 4, 4, 14, 30);
+        LocalDateTime tardetarde = LocalDateTime.of(2018, 4, 5, 17, 30);
+
+        Duration curto = Duration.ofMinutes(90);
+        Duration longo1 = Duration.ofHours(12);
+        Duration longo2 = Duration.ofHours(14);
+
+        GerenciadorVoos gerVoos = new GerenciadorVoos();
+
+        gerVoos.add(new Voo(grulis, tardecedo, longo2));
+        gerVoos.add(new Voo(grulis, tardetarde, longo2));
+        gerVoos.add(new Voo(poagru, manhacedo, curto));
+        gerVoos.add(new Voo(grupoa, manhameio, curto));
+        gerVoos.add(new Voo(grumia, manhacedo, longo1));
+
+
+
         System.out.println("\n* VooEscalas:");
-        VooEscalas VooEscalas1 = new VooEscalas(voo1, voo2);
-        System.out.println(VooEscalas1.PrintSomaDuracao());
-        System.out.println("aqui está a descrição de cada um dos voos que compões a escala");
-        System.out.println(VooEscalas1.toString());
+
+
+        // Vôo com várias escalas
+
+        VooEscalas vooEsc = new VooEscalas(poagru, manhacedo, longo2);
+        vooEsc.adicionarRota(grulis);
+
+        gerenciadorVoos1.add(vooEsc);
+
+        // O toString vai usar o método implementado
+        // em VooEscalas, mas reutilizando (reuso) o método
+        // original de Voo
+        System.out.println(vooEsc.toString());
+
+//        gerVoos.ordenarDataHoraDuracao();
+        gerenciadorVoos1.ordenarDataHoraDuracao();
+        System.out.println("Todos os vôos:\n");
+        for(Voo v: gerenciadorVoos1.listarTodos())
+        {
+            if(v instanceof VooEscalas) {
+                System.out.println(">>> Vôo com escalas!");
+                VooEscalas vaux = (VooEscalas) v;
+                System.out.println("Escalas: "+vaux.getTotalRotas());
+            }
+            System.out.println(v);
+        }
+
+
+        //System.out.println(VooEscalas1.PrintSomaDuracao());
+        //System.out.println("aqui está a descrição de cada um dos voos que compões a escala");
+        //System.out.println(VooEscalas.toString());
 
         System.out.println();
     }

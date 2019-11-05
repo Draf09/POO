@@ -5,15 +5,17 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Collections;
 
 public class GerenciadorAeroportos {
 	private ArrayList<Aeroporto> aeroportos;
 
-	public GerenciadorAeroportos() {}
 
-	public GerenciadorAeroportos(ArrayList<Aeroporto> aeroportos) {
-		this.aeroportos = aeroportos;
+
+	public GerenciadorAeroportos() {
+		this.aeroportos = new ArrayList<>();
 	}
+
 
 	public void carregaAeroportos(String nomeArq) throws IOException {
 		Path path = Paths.get(nomeArq);
@@ -33,12 +35,12 @@ public class GerenciadorAeroportos {
 
 				Geo geo = new Geo(Double.parseDouble(latitude), Double.parseDouble(longitude));
 				Aeroporto a = new Aeroporto(cod, geo, nome,codigoPais);
-				add(a);
+				adicionar(a);
 			}
 		}
 	}
 
-	public void add(Aeroporto aero) {
+	public void adicionar(Aeroporto aero) {
 		aeroportos.add(aero);
 	}
 

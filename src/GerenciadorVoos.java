@@ -1,6 +1,6 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-
+import java.util.Comparator;
 
 public class GerenciadorVoos {
 
@@ -19,6 +19,16 @@ public class GerenciadorVoos {
 	public ArrayList<Voo> listarTodos() {
 		return voos;
 		//return new ArrayList<>(voos);
+	}
+
+	public void ordenarDataHora() {
+		//voos.sort(Comparator.comparing(v -> v.getDatahora()));
+		voos.sort(Comparator.comparing(Voo::getDataHora));
+	}
+
+	public void ordenarDataHoraDuracao() {
+		voos.sort( Comparator.comparing(Voo::getDataHora).
+				thenComparing(Voo::getDuracao));
 	}
 
 

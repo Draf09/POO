@@ -23,7 +23,6 @@ public class Voo {
 		this.status = Status.COONFIRMADO;
 	}
 
-
 	public LocalDateTime getDataHora() {
 		return datahora;
 	}
