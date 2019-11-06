@@ -3,19 +3,15 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Collections;
+import java.util.*;
 
 public class GerenciadorAeroportos {
-	private ArrayList<Aeroporto> aeroportos;
-
+	private Map<String, Aeroporto> aeroportos;
 
 
 	public GerenciadorAeroportos() {
-		this.aeroportos = new ArrayList<>();
+		this.aeroportos = new LinkedHashMap<>();
 	}
-
 
 	public void carregaAeroportos(String nomeArq) throws IOException {
 		Path path = Paths.get(nomeArq);
@@ -41,18 +37,21 @@ public class GerenciadorAeroportos {
 	}
 
 	public void adicionar(Aeroporto aero) {
-		aeroportos.add(aero);
+		aeroportos.put(aero.getCodigo(), aero);
 	}
 
 	public ArrayList<Aeroporto> listarTodos() {
-		return new ArrayList<>(aeroportos);
+		return new ArrayList<>(aeroportos.values());
 	}
 
 	public Aeroporto buscarCodigo(String codigo) {
-		for(Aeroporto a: aeroportos)
-			if(a.getCodigo().equals(codigo))
-				return a;
-		return null;
+		return aeroportos.get(codigo);
+	}
+
+	public ArrayList<Aeroporto> listarTodosOrdenado() {
+		ArrayList<Aeroporto> list = new ArrayList<>(aeroportos.values());
+		list.sort( Comparator.comparing(Aeroporto::getCodigo));
+		return list;
 	}
 
 }
